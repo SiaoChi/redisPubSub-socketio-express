@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Socket.io 訊息接收</title>
+</head>
+
+<body>
+    <h2>以下將出現socketio 訂閱 redis channel real time message</h2>
+    <p>在localhost terminal 開啟redis cli 發布訊息觀察</p>
+    <pre>
+        redis-cli
+        public my_channel "hello message"
+    </pre>
+    <div id="message">
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
+
+        socket.on('message', (message) => {
+            document.getElementById('message').innerHTML = message;
+        });
+    </script>
+</body>
+
+</html>
